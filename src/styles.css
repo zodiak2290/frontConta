@@ -4,3 +4,12 @@
     padding: 0px !important;
     border-radius: 0px !important;
 }
+
+.active {
+  border-bottom: 3px solid;
+}
+
+.jumbotron{
+  padding: 25px;
+  border-radius: 15;
+}
