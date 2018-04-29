@@ -8,13 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
+import { AddCategoriaComponent } from './components/categorias/add-categoria/add-categoria.component';
+import { TableComponent } from './components/generales/table/table.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    CategoriasComponent,
+    AddCategoriaComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
