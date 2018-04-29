@@ -1,0 +1,47 @@
+<div class="col-lg-12">
+  <div class="container-fluid">
+    <div class="row">
+        <button class="btn btn-primary btn-o pull-right" data-toggle="modal" data-target="#myModal">
+				  Agregar Categoria
+		    </button>
+    </div>
+    <div class="row">
+    <div class="table-responsive">
+    		<table class="table table-bordered table-hover table-condensed">
+    			<thead>
+    				<tr>
+    					<th>#</th>
+    					<th>Nombre</th>
+    					<th>Descripcion</th>
+    					<th>Acciones</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr *ngFor="let categoria of categorias">
+    					<td>
+    			        {{ $index }}
+              </td>
+    					<td> {{ categoria.nombre}} </td>
+    					<td> {{ categoria.descripcion}} </td>
+    					<td>
+                <a href="#" class="btn btn-sm">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a href="#" class="btn btn-sm">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </a>
+              </td>
+    				</tr>
+    			</tbody>
+    		</table>
+    	</div>
+  </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <app-add-categoria></app-add-categoria>
+    </div>
+  </div>
+</div>
