@@ -1,3 +1,44 @@
-<p>
-  login works!
-</p>
+<div class="row">
+  <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+    <div class="alert alert-{{status}}">
+            {{ mensaje }}
+    </div>
+    <!-- start: LOGIN BOX -->
+    <div class="box-login">
+      <form class="form-login" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <fieldset>
+          <legend>
+            Ingresar
+          </legend>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" name="email"  #email="ngModel" [(ngModel)]="user.email"
+            required  placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+          </div>
+          <span *ngIf="!email.valid && email.touched">
+            Email requerido
+          </span>
+          <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                <input type="password" class="form-control" name="pass" #pass="ngModel" [(ngModel)]="user.pass" required  placeholder="Password"/>
+              </div>
+              <span *ngIf="!pass.valid && pass.touched">
+                Contraseña requerida
+              </span>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary pull-right" [disabled]="!loginForm.form.valid">
+              Login <i class="fa fa-arrow-circle-right"></i>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- end: LOGIN BOX -->
+  </div>
+</div>
