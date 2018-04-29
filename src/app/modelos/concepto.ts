@@ -1,7 +1,7 @@
 export class Concepto {
-  construct(
-    public _id: string,
+  constructor(
+    public id: string,
     public nombre: string,
-    public categoria_id: number,
+    public categoria_id: string
   ){}
 }
