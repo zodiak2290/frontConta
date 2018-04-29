@@ -1,3 +1,97 @@
-<p>
-  register works!
-</p>
+<div class="col-lg-6 col-lg-offset-3">
+    <div class="alert alert-{{status}}">
+            {{ mensaje }}
+    </div>
+    <div >
+  		<div class="row main">
+  				<div class="panel-heading">
+               <div class="panel-title text-center">
+               		 <h1 class="title">Registrate</h1>
+               		 <hr />
+               	</div>
+  	      </div>
+  				<div class="main-login main-center">
+  					<form class="form-horizontal" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+              <div class="form-group">
+                <label for="name" class="cols-sm-2 control-label">Nombre</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+                    </span>
+                    <input type="text" class="form-control" name="name"
+                    #name="ngModel" [(ngModel)]="user.name" required  placeholder="Nombre"/>
+                  </div>
+                  <span *ngIf="!name.valid && name.touched">
+                    Nombre requerido
+                  </span>
+                </div>
+              </div>
+  						<div class="form-group">
+  							<label for="email" class="cols-sm-2 control-label">Email</label>
+  							<div class="cols-sm-10">
+  								<div class="input-group">
+  									<span class="input-group-addon">
+                      <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+  									<input type="text" class="form-control" name="email"  #email="ngModel" [(ngModel)]="user.email"
+                    required  placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+  								</div>
+                  <span *ngIf="!email.valid && email.touched">
+                    Email requerido
+                  </span>
+  							</div>
+  						</div>
+
+  						<div class="form-group">
+  							<label for="username" class="cols-sm-2 control-label">Username</label>
+  							<div class="cols-sm-10">
+  								<div class="input-group">
+  									<span class="input-group-addon"><i class="	glyphicon glyphicon-user" aria-hidden="true"></i></span>
+  									<input type="text" class="form-control" name="username"
+                    #username="ngModel" [(ngModel)]="user.username" required  placeholder="Usuario"/>
+  								</div>
+                  <span *ngIf="!username.valid && username.touched">
+                    Campo requerido
+                  </span>
+  							</div>
+  						</div>
+
+  						<div class="form-group">
+  							<label for="password" class="cols-sm-2 control-label">Password</label>
+  							<div class="cols-sm-10">
+  								<div class="input-group">
+  									<span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+  									<input type="password" class="form-control" name="pass" #pass="ngModel" [(ngModel)]="user.pass" required  placeholder="Password"/>
+  								</div>
+                  <span *ngIf="!pass.valid && pass.touched">
+                    Contraseña requerida
+                  </span>
+  							</div>
+  						</div>
+
+  						<div class="form-group">
+  							<label for="confirm" class="cols-sm-2 control-label">Confirmar Password</label>
+  							<div class="cols-sm-10">
+  								<div class="input-group">
+  									<span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+  									<input type="password" class="form-control" name="confirm" #confirm="ngModel"  [(ngModel)]="user.confirm" required placeholder="Confirmar Password"/>
+  								</div>
+                  <span *ngIf="!confirm.valid && confirm.touched">
+                    Confirmación requerida
+                  </span>
+  							</div>
+  						</div>
+
+  						<div class="form-group ">
+  							<button type="submit" class="btn btn-primary btn-lg btn-block login-button" [disabled]="!registerForm.form.valid">
+                  Registrarme
+                </button>
+  						</div>
+  						<div class="login-register">
+  				         <a [routerLink]="['/login']">Ingresar</a>
+  				    </div>
+  					</form>
+  				</div>
+  		</div>
+  </div>
+</div>
