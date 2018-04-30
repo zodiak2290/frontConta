@@ -25,6 +25,11 @@ export class CategoriaService {
     return this._http.post(this.url + 'categoria', params, { headers: this.headers });
   }
 
+  editCategoria(categoria: Categoria){
+    let params = JSON.stringify(categoria);
+    return this._http.put(this.url + 'categoria/' + categoria._id, params, { headers: this.headers });
+  }
+
   getToken() {
     let token = localStorage.getItem('token');
     let response = null;

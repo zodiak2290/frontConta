@@ -1,7 +1,7 @@
 <div class="col-lg-12">
   <div class="container-fluid">
     <div class="row">
-        <button class="btn btn-primary btn-o pull-right" data-toggle="modal" data-target="#myModal">
+        <button class="btn btn-primary btn-o pull-right" (click)="editar()">
 				  Agregar Categoria
 		    </button>
     </div>
@@ -17,14 +17,14 @@
     				</tr>
     			</thead>
     			<tbody>
-    				<tr *ngFor="let categoria of categorias">
+    				<tr *ngFor="let categoria of categorias; let i = index">
     					<td>
-    			        {{ $index }}
+    			        {{ i + 1 }}
               </td>
     					<td> {{ categoria.nombre}} </td>
     					<td> {{ categoria.descripcion}} </td>
     					<td>
-                <a href="#" class="btn btn-sm">
+                <a class="btn btn-sm" (click)="editar(categoria)">
                     <i class="glyphicon glyphicon-edit"></i>
                 </a>
                 <a href="#" class="btn btn-sm">
@@ -40,8 +40,8 @@
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-        <app-add-categoria></app-add-categoria>
+    <div class="modal-content" *ngIf="showModal">
+        <app-add-categoria [categoriaEdit]="categoriaEdit"></app-add-categoria>
     </div>
   </div>
 </div>

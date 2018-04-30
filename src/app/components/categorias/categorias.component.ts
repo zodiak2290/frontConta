@@ -9,7 +9,9 @@ import { CategoriaService } from '../../services/categoria/categoria.service';
   providers: [CategoriaService]
 })
 export class CategoriasComponent implements OnInit {
+  private categoriaEdit: Categoria;
   private categorias: Categoria[];
+  private showModal = false;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -30,6 +32,12 @@ export class CategoriasComponent implements OnInit {
             //var errorMessage = <any>error;
             //console.log(errorMessage);
         })
+  }
+
+  editar(categoria){
+      this.categoriaEdit = categoria;
+      this.showModal = true;
+      $("#myModal").modal('toggle');
   }
 
 }
