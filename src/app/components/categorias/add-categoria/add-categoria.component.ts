@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Categoria } from '../../../modelos/categoria';
 import { CategoriaService } from '../../../services/categoria/categoria.service';
 
@@ -12,26 +13,30 @@ export class AddCategoriaComponent implements OnInit, DoCheck {
   public categoria: Categoria;
   private title:string;
   @Input() categoriaEdit: Categoria;
+
   constructor(
+    private toastr: ToastrService,
     private _categoriaService: CategoriaService
   ) {
     this.title = "Agregar";
-    this.categoria = new Categoria("", "", "");
   }
 
-  ngOnInit() {
-    if(this.categoriaEdit){
-      this.categoria = this.categoriaEdit;
+  ngOnInit() {console.log(this.categoriaEdit);
+    //this.categoria = this.categoriaEdit;
+    if(this.categoriaEdit._id != ""){
       this.title = "Editar";
+    }  else {
+        this.title = "Agregar";
     }
   }
 
   addCategoria(){
-    if(!this.categoriaEdit){
+    if(this.categoria && !this.categoria._id){
       this._categoriaService.addCategoria(this.categoria)
       .subscribe(
         response => {
             $("#myModal").modal('toggle');
+            this.toastr.success('Categoria', 'Se agrego la categoria:'  + response.categoria.nombre);
         }, error => {
             console.log(error);
         }
@@ -41,6 +46,7 @@ export class AddCategoriaComponent implements OnInit, DoCheck {
       .subscribe(
         response => {
             $("#myModal").modal('toggle');
+            this.toastr.success('Categoria!', 'Editada con exito!');
         }, error => {
             console.log(error);
         }
@@ -49,13 +55,6 @@ export class AddCategoriaComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    if(this.categoriaEdit){
-      this.categoria = this.categoriaEdit;
-      this.title = "Editar";
-    } else {
-      this.title = "Agregar";
-      this.categoria = new Categoria("", "", "");
-    }
+   this.categoria = this.categoriaEdit;
   }
-
 }

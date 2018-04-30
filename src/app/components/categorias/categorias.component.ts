@@ -35,9 +35,18 @@ export class CategoriasComponent implements OnInit {
   }
 
   editar(categoria){
-      this.categoriaEdit = categoria;
-      this.showModal = true;
+    //this.showModal = false;
+      if(categoria){
+        this.categoriaEdit = categoria;
+      } else {
+        this.categoriaEdit = new Categoria("", "", "");
+      }
       $("#myModal").modal('toggle');
+      this.showModal = true;
+  }
+
+  eliminar(categoria) {
+    
   }
 
 }

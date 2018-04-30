@@ -1,6 +1,6 @@
 export class Categoria {
   constructor(
-    public id: string,
+    public _id: string,
     public nombre: string,
     public usuario_id: string
   ){}
