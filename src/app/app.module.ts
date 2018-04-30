@@ -1,21 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { routing, appRoutingProviders } from './route/route-routing.module';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-//import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { routing, appRoutingProviders } from './route/route-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { HttpModule } from '@angular/http';
+//components
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
+import { TableComponent } from './components/generales/table/table.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { AddCategoriaComponent } from './components/categorias/add-categoria/add-categoria.component';
-import { TableComponent } from './components/generales/table/table.component';
+import { ModalConceptosComponent } from './components/categorias/modal-conceptos/modal-conceptos.component';
 
-
+//guards
+import { RutaGuard }  from './validacion/ruta.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,8 @@ import { TableComponent } from './components/generales/table/table.component';
     HomeComponent,
     CategoriasComponent,
     AddCategoriaComponent,
-    TableComponent
+    TableComponent,
+    ModalConceptosComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +36,10 @@ import { TableComponent } from './components/generales/table/table.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added,
+    SweetAlert2Module.forRoot()
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, RutaGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
