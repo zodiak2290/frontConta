@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from '../global/global.service';
 import { Categoria } from '../../modelos/categoria';
@@ -15,20 +15,25 @@ export class CategoriaService {
       .set('Authorization', this.getToken());
   }
 
-  getCategorias(): Observable<any>{
-    return this._http.get(this.url + 'categoria', { headers: this.headers} );
+  getCategorias(params: any): Observable<any>{
+    return this._http.get(this.url + 'categoria', {headers: this.headers, params: params});
   }
 
-  addCategoria(categoria: Categoria){
+  addCategoria(categoria: Categoria): Observable<any>{
     categoria.usuario_id = this.getIdentity()._id;
     let params = JSON.stringify(categoria);
     return this._http.post(this.url + 'categoria', params, { headers: this.headers });
   }
 
-  editCategoria(categoria: Categoria){console.log(categoria);
+  editCategoria(categoria: Categoria) : Observable<any>{
     let params = JSON.stringify(categoria);
     return this._http.put(this.url + 'categoria/' + categoria._id, params, { headers: this.headers });
   }
+
+  eliminarCategoria(categoria: Categoria): Observable<any>{
+    return this._http.delete(this.url + 'categoria/' + categoria._id, { headers: this.headers });
+  }
+
 
   getToken() {
     let token = localStorage.getItem('token');
