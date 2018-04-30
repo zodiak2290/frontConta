@@ -6,7 +6,12 @@
 }
 
 .active {
-  border-bottom: 3px solid;
+  border-bottom: 5px solid #206E9F;
+  border-radius: 2px 12px 120px 100px;
+  transition: border-bottom .2s ease-in-out;
+  -webkit-transition: border-bottom .2s ease-in-out;
+  -moz-transition: border-bottom .2s ease-in-out;
+  -ms-transition: border-bottom .2s ease-in-out;
 }
 
 .jumbotron{
