@@ -5,13 +5,14 @@ import { HomeComponent } from '../components/home/home.component';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { CategoriasComponent } from '../components/categorias/categorias.component';
+import { RutaGuard }  from '../validacion/ruta.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: LoginComponent },
+  { path: 'home', component: HomeComponent, canActivate: [RutaGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegisterComponent },
-  { path: 'categorias', component: CategoriasComponent }
+  { path: 'categorias', component: CategoriasComponent, canActivate: [RutaGuard] }
 ];
 
 export const appRoutingProviders: any[] = [];
