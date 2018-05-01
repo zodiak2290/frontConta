@@ -19,7 +19,7 @@ export class LocalstorageService {
     if(token != 'undefined'){
       return token;
     } else {
-      return false;
+      return null;
     }
   }
 }

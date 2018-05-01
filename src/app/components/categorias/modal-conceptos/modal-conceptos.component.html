@@ -9,6 +9,15 @@
   </div>
   <div class="modal-body">
     <div class="row">
+      <swal
+        #deleteSwal
+        title="Esta seguro que desea eliminar el concepto?"
+        text="Se perderan los movimientos relacionados a este"
+        type="question"
+        [showCancelButton]="true"
+        [focusCancel]="true">
+      </swal>
+
         <div class="container-fluid">
           <div class="table-responsive">
             <table class="table table-bordered table-hover table-condensed">

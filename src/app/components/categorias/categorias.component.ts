@@ -22,7 +22,7 @@ export class CategoriasComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _categoriaService: CategoriaService,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {
       this.page = 1;
    }
