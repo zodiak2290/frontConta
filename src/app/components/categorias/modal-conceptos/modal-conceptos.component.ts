@@ -18,6 +18,8 @@ export class ModalConceptosComponent implements OnInit, OnChanges {
   private conceptoEdit: Concepto;
   private conceptos: Concepto[];
 
+  private conceptoADD: Concepto;
+
   private page: number;
   private pages: number;
   private numbers: number[];
@@ -65,8 +67,45 @@ export class ModalConceptosComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.categoria){
+      this.conceptoADD  = null;
       this.getConceptos(this.page);
     }
+  }
+
+  addConcepto(){
+    this.conceptoADD = new Concepto("", "", "", this.categoria._id);
+  }
+
+  eliminarADD(){
+    this.conceptoADD  = null;
+  }
+
+  agregarC(concepto){
+    this._conceptoService.addCategoria(this.conceptoADD)
+    .subscribe(
+      response => {
+        this.toastr.success('Concepto!', 'Agregado: ' );
+        this.conceptoADD  = null;
+        this.getConceptos(this.page);
+      }, error => {
+          this.toastr.error('Error', error.error.message);
+      });
+  }
+
+  editar(concepto){
+    concepto.edit =  !concepto.edit;
+  }
+
+  editarConfirm(concepto){
+    this._conceptoService.editConcepto(concepto)
+    .subscribe(
+      response => {
+        this.toastr.success('Concepto', 'Editado' );
+        concepto.edit = false;
+        //this.getConceptos(this.page);
+      }, error => {
+          this.toastr.error('Error', error.error.message);
+      });
   }
 
 }

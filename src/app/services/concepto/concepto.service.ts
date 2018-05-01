@@ -18,18 +18,19 @@ export class ConceptoService {
   getConceptos(params: any): Observable<any>{
     return this._http.get(this.url + 'conceptos', {headers: this.headers, params: params});
   }
-/*
-  addCategoria(categoria: Categoria): Observable<any>{
-    categoria.usuario_id = this.getIdentity()._id;
-    let params = JSON.stringify(categoria);
-    return this._http.post(this.url + 'categoria', params, { headers: this.headers });
+
+  addCategoria(concepto: Concepto): Observable<any>{
+    //categoria.usuario_id = this.getIdentity()._id;
+    let params = JSON.stringify(concepto);
+    return this._http.post(this.url + 'categoria/'+ concepto.categoria_id +'/concepto', params,
+    { headers: this.headers });
   }
 
-  editCategoria(categoria: Categoria) : Observable<any>{
-    let params = JSON.stringify(categoria);
-    return this._http.put(this.url + 'categoria/' + categoria._id, params, { headers: this.headers });
+  editConcepto(concepto: Concepto) : Observable<any>{console.log(concepto);
+    let params = JSON.stringify(concepto);
+    return this._http.put(this.url + 'concepto/' + concepto._id, params, { headers: this.headers });
   }
-*/
+
   eliminarConcepto(concepto: Concepto): Observable<any>{
     return this._http.delete(this.url + 'concepto/' + concepto._id, { headers: this.headers });
   }
