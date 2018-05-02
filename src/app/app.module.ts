@@ -19,6 +19,7 @@ import { ModalConceptosComponent } from './components/categorias/modal-conceptos
 
 //guards
 import { RutaGuard }  from './validacion/ruta.guard';
+import { MovimientoComponent } from './components/movimiento/movimiento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { RutaGuard }  from './validacion/ruta.guard';
     CategoriasComponent,
     AddCategoriaComponent,
     TableComponent,
-    ModalConceptosComponent
+    ModalConceptosComponent,
+    MovimientoComponent
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,13 @@
     <div class="jumbotron">
         <h1>Bienvenido</h1>
         <p class="text-center">
-            <a class="btn btn-primary btn-lg" role="button">
-                Agregar movimiento
+            <a class="btn btn-primary btn-lg" role="button" (click)="showDivMovimiento = !showDivMovimiento">
+                <span *ngIf="showDivMovimiento">Cancelar</span>
+                <span *ngIf="!showDivMovimiento">Agregar movimiento</span> 
             </a>
         </p>
+    </div>
+    <div class="row" *ngIf="showDivMovimiento">
+      <app-movimiento></app-movimiento>
     </div>
 </div>
