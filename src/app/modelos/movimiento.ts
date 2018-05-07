@@ -5,5 +5,6 @@ export class Movimiento {
     public motivo: string,
     public tipo: number,//0 Gasto 1Ingreso
     public concepto_id: string,
+    public fecha: string
   ){}
 }
