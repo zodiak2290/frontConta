@@ -14,25 +14,20 @@
       [showCancelButton]="true"
       [focusCancel]="true">
     </swal>
-    <div class="row">
-        <div class="table-responsive">
-      		<table class="table table-hover table-condensed table-striped">
-      			<thead>
-      				<tr>
-      					<th class="text-center">#</th>
-      					<th>Nombre</th>
-      					<th class="text-center">Descripcion</th>
-      					<th class="text-center">Acciones</th>
-      				</tr>
-      			</thead>
-      			<tbody>
-      				<tr *ngFor="let categoria of categorias; let i = index">
-      					<td style="max-width: 5%; width: 5%" class="text-center">
-                    {{ (i + 1) + ( (page * 10) - 10) }}
-                </td>
-      					<td> {{ categoria.nombre}} </td>
-      					<td class="text-justify"> {{ categoria.descripcion}} </td>
-      					<td style="max-width: 10%; width: 10%">
+    <div class="row" style="margin-top: 10px;">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" *ngFor="let categoria of categorias; let i = index">
+        <div class="panel panel-white radius text-center" style="box-shadow: 5px 1px 20px;">
+          <div class="panel-body">
+            <span class="fa-stack fa-2x"> 
+              <i class="glyphicon glyphicon-th text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> 
+            </span>
+            <h2 class="small">
+                {{ categoria.nombre | uppercase}}
+            </h2>
+            <p class="text-small">
+                {{ categoria.descripcion || "Sin descripcion"}}
+            </p>
+            <p class="links cl-effect-1">
                   <a class="btn btn-sm" (click)="editar(categoria)" title="Editar">
                       <i class="glyphicon glyphicon-edit"></i>
                   </a>
@@ -42,11 +37,10 @@
                   <a class="btn btn-sm" title="Agrear conceptos" (click)="addConcepts(categoria)">
                       <i class="glyphicon glyphicon-th-list"></i>
                   </a>
-                </td>
-      				</tr>
-      			</tbody>
-      		</table>
-      	</div>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
     <nav aria-label="Page navigation">
       <ul class="pagination pagination-sm">
