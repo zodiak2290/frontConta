@@ -15,7 +15,7 @@ import { MovimientoService } from '../../services/movimiento/movimiento.service'
 export class MovimientoComponent implements OnInit {
   public movimiento: Movimiento;
   public categoriaSelected: Categoria;
-  public conceptoSelected: string;
+  public conceptoSelected: Concepto;
   public categorias: Array<Categoria>;
   public conceptos: Array<Concepto>;
   constructor(
@@ -41,35 +41,30 @@ export class MovimientoComponent implements OnInit {
     );
   }
   callConceptos(){
-
     let seleccionada = this.categoriaSelected;
-    let categoriaSelec = this.categorias.find(function(categoria){
-        return categoria._id == seleccionada;
-    });
-    console.log(this.categoriaSelected.nombre);
-    /*this._conceptoService.getConceptos({limit: 10000000,  idcategoria: categoriaSelec._id })
+    /*if( seleccionada ){
+      let categoriaSelec = this.categorias.find(function(categoria){
+          return categoria._id == seleccionada._id;
+      });
+    }*/
+    //console.log(this.categoriaSelected);
+    this._conceptoService.getConceptos({limit: 10000000,  idcategoria: seleccionada._id })
     .subscribe(
       response => {
         this.conceptos = response.conceptos.docs;
+        this.conceptoSelected = this.conceptos[0];
       }, error => {
           console.log(error);
       }
-    );*/
+    );
   }
 
   addMovimiento(){
-    console.log(this.conceptoSelected);
-    console.log(this.conceptos);
     if(this.conceptos && this.conceptoSelected){
-      console.log(this.conceptoSelected);
       let conceptselect = this.conceptoSelected;
-      console.log(conceptselect);
-      let concepto = this.conceptos.find(function(conceptoCU){
-          return conceptoCU._id == conceptselect;
-      });
-      this.movimiento.concepto_id = concepto._id;
+      this.movimiento.concepto_id = conceptselect._id;
       //this.movimiento.fecha = new Date(this.movimiento.fecha);
-      console.log(this.movimiento);
+      
       this._movimientoService.addMovimiento(this.movimiento)
       .subscribe(
           response => {
