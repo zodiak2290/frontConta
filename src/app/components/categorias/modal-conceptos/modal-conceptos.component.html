@@ -4,7 +4,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <h4 class="modal-title" id="myModalLabel">
-    Conceptos de {{categoria.nombre}}
+    Conceptos de {{categoria.nombre | uppercase}}
     </h4>
   </div>
   <div class="modal-body">
@@ -35,7 +35,7 @@
                       {{ i + 1 }}
                   </td>
                   <td>
-                      <span *ngIf="!concepto.edit">{{ concepto.nombre}}</span>
+                      <span *ngIf="!concepto.edit">{{ concepto.nombre | uppercase }}</span>
                       <span *ngIf="concepto.edit">
                         <input type="text" class="form-control" name="nombre{{concepto._id}}"
                         #nombre{{concepto._id}}="ngModel" [(ngModel)]="concepto.nombre"
