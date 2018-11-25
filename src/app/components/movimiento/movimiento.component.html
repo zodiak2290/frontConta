@@ -14,17 +14,17 @@
               </select>-->
               <select class="form-control" name="categoria" [(ngModel)]="categoriaSelected"
               #categoria="ngModel" (ngModelChange)="callConceptos()">
-                <option *ngFor="let categoria of categorias;let i= index;" value="{{categoria}}" selected="i==0">
-                  {{categoria.nombre}}</option>
+                <option *ngFor="let categoria of categorias;let i= index;" [ngValue]="categoria" selected="i==0">
+                  {{categoria.nombre | uppercase}}</option>
               </select>
           </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
             <label for="concepto">Conceptos</label>
-            <select class="form-control" name="concepto" [(ngModel)]="conceptoSelected" #categoria="ngModel">
-               <option *ngFor="let concepto of conceptos" value="{{concepto._id}}">
-                 {{concepto.nombre}}
+            <select class="form-control" name="concepto" [(ngModel)]="conceptoSelected" #concepto="ngModel">
+               <option *ngFor="let concepto of conceptos; let i=index;" [ngValue]="concepto" selected="i==0">
+                 {{concepto.nombre | uppercase}}
                </option>
             </select>
         </div>
@@ -52,7 +52,7 @@
         </textarea>
       </div>
       <button type="submit" class="btn btn-success pull-right" >
-        Aggregar
+        Agregar
       </button>
     </form>
   </div>
