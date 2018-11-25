@@ -20,6 +20,7 @@ import { ModalConceptosComponent } from './components/categorias/modal-conceptos
 //guards
 import { RutaGuard }  from './validacion/ruta.guard';
 import { MovimientoComponent } from './components/movimiento/movimiento.component';
+import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { MovimientoComponent } from './components/movimiento/movimiento.componen
     AddCategoriaComponent,
     TableComponent,
     ModalConceptosComponent,
-    MovimientoComponent
+    MovimientoComponent,
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,
