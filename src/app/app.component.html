@@ -15,7 +15,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a [routerLink]="['/estadisticas']" [routerLinkActive]="['active']">
                     <span class="glyphicon glyphicon-stats">
                     </span>
                     Estadísticas
@@ -67,5 +67,7 @@
     </nav>
 </div>
 <main>
-  <router-outlet></router-outlet>
+  <div style="margin-left: 30px; margin-right: 30px;">
+    <router-outlet></router-outlet>
+  </div>
 </main>
