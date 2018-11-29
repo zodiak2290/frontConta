@@ -16,7 +16,6 @@ export class CategoriaService {
   }
 
   getCategorias(params: any): Observable<any>{
-    params.limit = 12;
     return this._http.get(this.url + 'categoria', {headers: this.headers, params: params});
   }
 
