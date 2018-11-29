@@ -25,6 +25,7 @@ export class CategoriasComponent implements OnInit {
     private toastr: ToastrService
   ) {
       this.page = 1;
+      this.numbers = [];
    }
 
   ngOnInit() {
@@ -32,15 +33,17 @@ export class CategoriasComponent implements OnInit {
   }
 
   getCategorias(page){
-    if(page > 0){
+    if( page > 0  ){
       this.page = page;
-      let params = { page: page };
+      let params = { page: page, limit: 12 };
       this._categoriaService.getCategorias(params)
       .subscribe(
           response => {
+            console.log(response)
               this.categorias = response.categorias.docs;
               this.pages = response.categorias.pages;
-              this.numbers = Array.from(Array(this.pages).keys());
+              this.numbers = this.pages ? Array.from(Array(this.pages).keys()): [];
+              console.log(this.numbers)
           }, error => {
               console.log(error);
           });
