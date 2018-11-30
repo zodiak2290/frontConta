@@ -6,7 +6,7 @@
 }
 
 .active {
-  border-bottom: 5px solid #206E9F;
+  border-bottom: 5px solid #B3DBC0;
   border-radius: 2px 12px 120px 100px;
   transition: border-bottom .2s ease-in-out;
   -webkit-transition: border-bottom .2s ease-in-out;
