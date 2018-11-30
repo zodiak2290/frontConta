@@ -16,11 +16,13 @@ import { TableComponent } from './components/generales/table/table.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { AddCategoriaComponent } from './components/categorias/add-categoria/add-categoria.component';
 import { ModalConceptosComponent } from './components/categorias/modal-conceptos/modal-conceptos.component';
+import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 
 //guards
 import { RutaGuard }  from './validacion/ruta.guard';
 import { MovimientoComponent } from './components/movimiento/movimiento.component';
-import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { EstadisticasComponent } from './components/estadisticas/estadisticas.co
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added,
+    AngularFontAwesomeModule,
     SweetAlert2Module.forRoot()
   ],
   providers: [appRoutingProviders, RutaGuard],
