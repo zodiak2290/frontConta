@@ -6,12 +6,12 @@
 }
 
 .active {
-  border-bottom: 5px solid #B3DBC0;
-  border-radius: 2px 12px 120px 100px;
-  transition: border-bottom .2s ease-in-out;
-  -webkit-transition: border-bottom .2s ease-in-out;
-  -moz-transition: border-bottom .2s ease-in-out;
-  -ms-transition: border-bottom .2s ease-in-out;
+  border-bottom: 3px solid #B3DBC0;
+  border-radius: 20px 12px 120px 10px;
+  transition: border-bottom .10s ease-in-out;
+  -webkit-transition: border-bottom .10s ease-in-out;
+  -moz-transition: border-bottom .10s ease-in-out;
+  -ms-transition: border-bottom .10s ease-in-out;
 }
 
 .jumbotron{
@@ -27,6 +27,7 @@
 
 body {
   font-family: 'Lato';
+  background-color: #FDF6F6;
 }
 
 h1,
