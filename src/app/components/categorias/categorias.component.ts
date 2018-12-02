@@ -4,9 +4,22 @@ import { Categoria } from '../../modelos/categoria';
 import { CategoriaService } from '../../services/categoria/categoria.service';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { ToastrService } from 'ngx-toastr';
+import {trigger, transition, style, animate, query, stagger} from '@angular/animations';
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
+  animations: [
+    trigger('listAnimation', [
+     transition('* => *', [
+        query(':enter', [
+          style({ bottom: -60, left:-20, opacity:0 }),
+          stagger(100, [
+            animate('0.19999s', style({ bottom: 0, left:0, opacity: 1 }))
+          ])
+        ])
+      ])
+    ])
+  ],
   styleUrls: ['./categorias.component.css'],
   providers: [CategoriaService],
 })
