@@ -19,6 +19,7 @@ export class EstadisticasComponent implements OnInit {
 
   	constructor(private _movimientoService: MovimientoService, private _chartService: ChartService) {
 		this.fechaIni = "2017-06-01";
+		this.fechaFin = "2017-06-30";
   	}
 
   	ngOnInit() {
@@ -29,8 +30,8 @@ export class EstadisticasComponent implements OnInit {
   	getChartData() {
 
   		let params = {
-  			fechaIni: this.fechaIni || "2017-06-01",
-  			fechaFin: this.fechaFin || "2017-07-01"
+  			fechaIni: this.fechaIni,
+  			fechaFin: this.fechaFin
   		}
   		this._movimientoService.getGastos( params )
   		.subscribe(
