@@ -30,4 +30,9 @@ export class MovimientoService {
     return response;
   }
 
+  getGastos(params: any): Observable<any> {
+    return this._http.get(this.url + 'gastos', 
+      {headers: this.headers, params});
+  }
+
 }
