@@ -1,0 +1,13 @@
+<div>
+	<input type="date" name="fechaIni" id="fechaIni" [(ngModel)]="fechaIni">
+	-
+	<input type="date" name="fechaFin" id="fechaFin" [(ngModel)]="fechaFin">
+
+{{ fechaIni }}
+	{{ fechaFin }}
+	<button  (click)="ngOnInit()">
+		Actualizar
+	</button>
+	<strong>Total periodo: </strong> {{ total | currency }}
+	<div id="chartdiv" style="height: 500px"></div>
+</div>

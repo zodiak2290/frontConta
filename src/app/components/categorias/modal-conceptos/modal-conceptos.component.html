@@ -1,0 +1,108 @@
+<form #addCategoriaForm="ngForm" (ngSubmit)="addCategoria(addCategoriaForm)">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+    Conceptos de {{categoria.nombre | uppercase}}
+    </h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <swal
+        #deleteSwal
+        title="Esta seguro que desea eliminar el concepto?"
+        text="Se perderan los movimientos relacionados a este"
+        type="question"
+        [showCancelButton]="true"
+        [focusCancel]="true">
+      </swal>
+
+        <div class="container-fluid">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>Nombre</th>
+                  <th class="text-center">Descripcion</th>
+                  <th class="text-center">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let concepto of conceptos; let i = index">
+                  <td style="max-width: 5%; width: 5%" class="text-center">
+                      {{ i + 1 }}
+                  </td>
+                  <td>
+                      <span *ngIf="!concepto.edit">{{ concepto.nombre | uppercase }}</span>
+                      <span *ngIf="concepto.edit">
+                        <input type="text" class="form-control" name="nombre{{concepto._id}}"
+                        #nombre{{concepto._id}}="ngModel" [(ngModel)]="concepto.nombre"
+                        required  placeholder="Nombre"/>
+                      </span>
+                  </td>
+                  <td class="text-justify">
+                    <span *ngIf="!concepto.edit">
+                      {{ concepto.descripcion}}
+                    </span>
+                    <span *ngIf="concepto.edit">
+                      <textarea name="descripcion{{concepto._id}}" class="form-control" rows="8" cols="8"
+                      #descripcion{{concepto._id}}="ngModel" [(ngModel)]="concepto.descripcion">
+                      </textarea>
+                    </span>
+                  </td>
+                  <td style="max-width: 10%; width: 10%">
+                    <a class="btn btn-sm" (click)="editar(concepto)" title="Editar">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn btn-sm" title="Eliminar" [swal]="deleteSwal" (confirm)="eliminar(concepto)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                    <span *ngIf="concepto.edit">
+                      <a class="btn btn-sm" title="Confimar" (click)="editarConfirm(concepto)">
+                          <i class="glyphicon glyphicon-floppy-saved"></i>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+                <tr *ngIf="conceptoADD">
+                  <td style="max-width: 5%; width: 5%" class="text-center" colspan="2">
+                    <input type="text" class="form-control" name="nombre"
+                    #nombre="ngModel" [(ngModel)]="conceptoADD.nombre"
+                  required  placeholder="Nombre"/>
+                  </td>
+                  <td class="text-justify" style="max-width: 30%; width: 30%">
+                    <textarea name="descripcion" class="form-control" rows="8" cols="8"
+                    #descripcion="ngModel" [(ngModel)]="conceptoADD.descripcion">
+                    </textarea>
+                  </td>
+                  <td style="max-width: 10%; width: 10%" class="text-center">
+                    <a class="btn btn-sm" title="Cancelar" (click)="eliminarADD()">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                    <a class="btn btn-sm" title="Guardar" (click)="agregarC()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <button type="button" name="button"
+                    class="btn btn-primary pull-right" (click)="addConcepto()" *ngIf="!conceptoADD">
+                      Agregar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">
+      Cancelar
+    </button>
+  </div>
+</form>

@@ -1,0 +1,13 @@
+<div class="col-lg-8 col-lg-offset-2">
+    <div class="jumbotron">
+        <p class="text-center">
+            <a class="btn btn-primary btn-block" role="button" (click)="showDivMovimiento = !showDivMovimiento">
+                <span *ngIf="showDivMovimiento">Cancelar</span>
+                <span *ngIf="!showDivMovimiento">Agregar movimiento</span> 
+            </a>
+        </p>
+    </div>
+    <div class="row" *ngIf="showDivMovimiento">
+      <app-movimiento></app-movimiento>
+    </div>
+</div>
