@@ -1,48 +1,55 @@
 <div class="col-lg-12">
     <div class="container-fluid">
         <form #addMovimientoForm="ngForm" (ngSubmit)="addMovimiento(addMovimientoForm)">
-            <div class="col-lg-6">
+            <div class="col-lg-4 text-center">
+                <ngb-datepicker #dp [(ngModel)]="movimiento.fecha" (navigate)="date = $event.next" [ngModelOptions]="{standalone: true}"></ngb-datepicker>
+                
+                <!--<ngb-datepicker #d></ngb-datepicker>
                 <div class="form-group">
                     <label for="fecha">
                         Fecha {{ movimiento.fecha }}
                     </label>
                     <input type="date" class="form-control" name="fecha" #fecha="ngModel" [(ngModel)]="movimiento.fecha" />
-                </div>
+                </div>-->
             </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="categoria">Categoria</label>
-                    <select class="form-control input-sm" name="categoria" [(ngModel)]="categoriaSelected" #categoria="ngModel" (ngModelChange)="callConceptos()">
-                        <option *ngFor="let categoria of categorias;let i= index;" [ngValue]="categoria" selected="i==0">
-                            {{categoria.nombre | uppercase}}</option>
-                    </select>
+            <div class="col-lg-8">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select class="form-control input-sm" name="categoria" [(ngModel)]="categoriaSelected" #categoria="ngModel" (ngModelChange)="callConceptos()">
+                            <option *ngFor="let categoria of categorias;let i= index;" [ngValue]="categoria" selected="i==0">
+                                {{categoria.nombre | uppercase}}</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="concepto">Conceptos</label>
-                    <select class="form-control" name="concepto" [(ngModel)]="conceptoSelected" #concepto="ngModel">
-                        <option *ngFor="let concepto of conceptos; let i=index;" [ngValue]="concepto" selected="i==0">
-                            {{concepto.nombre | uppercase}}
-                        </option>
-                    </select>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="concepto">Conceptos</label>
+                        <select class="form-control" name="concepto" [(ngModel)]="conceptoSelected" #concepto="ngModel">
+                            <option *ngFor="let concepto of conceptos; let i=index;" [ngValue]="concepto" selected="i==0">
+                                {{concepto.nombre | uppercase}}
+                            </option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="monto">Monto</label>
-                    <input type="number" class="form-control" name="monto" #monto="ngModel" [(ngModel)]="movimiento.monto" required>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="monto" #monto="ngModel" placeholder="Monto" [(ngModel)]="movimiento.monto" required>
+                    </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group">
-                    <label for="motivo">Motivo</label>
-                    <textarea name="motivo" class="form-control" rows="8" cols="8" #descripcion="ngModel" [(ngModel)]="movimiento.motivo">
-                        (Opcional)
-                    </textarea>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="motivo">Motivo</label>
+                        <textarea name="motivo" class="form-control" rows="8" cols="8" #descripcion="ngModel" [(ngModel)]="movimiento.motivo">
+                            (Opcional)
+                        </textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <button type="submit" class="btn btn-success pull-right">
-                    Agregar
-                </button>
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-success pull-right">
+                        Agregar
+                    </button>
+                </div>
             </div>
         </form>
     </div>

@@ -6,6 +6,7 @@ import { Concepto } from '../../modelos/concepto';
 import { ConceptoService } from '../../services/concepto/concepto.service';
 import { CategoriaService } from '../../services/categoria/categoria.service';
 import { MovimientoService } from '../../services/movimiento/movimiento.service';
+import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-movimiento',
   templateUrl: './movimiento.component.html',
@@ -22,13 +23,14 @@ export class MovimientoComponent implements OnInit {
     private _categoriaService: CategoriaService,
     private _conceptoService: ConceptoService,
     private _movimientoService: MovimientoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private calendar: NgbCalendar
   ) {
     this.categoriaSelected = null;
   }
 
   ngOnInit() {
-    this.movimiento = new Movimiento("", 0, "", 0, "", "");
+    this.movimiento = new Movimiento("", 0, "", 0, "", this.calendar.getToday());
     this._categoriaService.getCategorias({limit: 10000000})
     .subscribe(
       response => {
@@ -64,7 +66,8 @@ export class MovimientoComponent implements OnInit {
       let conceptselect = this.conceptoSelected;
       this.movimiento.concepto_id = conceptselect._id;
       //this.movimiento.fecha = new Date(this.movimiento.fecha);
-      
+      console.log( this.movimiento );
+      /*
       this._movimientoService.addMovimiento(this.movimiento)
       .subscribe(
           response => {
@@ -74,7 +77,7 @@ export class MovimientoComponent implements OnInit {
           }, error => {
               console.log(error);
           }
-      )
+      )*/
     } else {
         this.toastr.error('Alerta!', 'No se ha seleccionado ningun concepto');
     }
