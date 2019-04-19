@@ -24,6 +24,7 @@ import { MovimientoComponent } from './components/movimiento/movimiento.componen
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     TableComponent,
     ModalConceptosComponent,
     MovimientoComponent,
-    EstadisticasComponent
+    EstadisticasComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
