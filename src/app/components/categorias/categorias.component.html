@@ -45,9 +45,9 @@
       [showCancelButton]="true"
       [focusCancel]="true">
     </swal>
-    <div class="row" style="margin-top: 10px;" [@listAnimation]="categorias.length">
-      <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" *ngFor="let categoria of categorias; let i = index" style="border-radius: 32px">
-        <div class="panel panel-white radius text-center" style="box-shadow: 1px 20px 70px -1px; border-radius: 180px 180px 180px 180px; background: #7BA4A8;" >
+    <div class="row" style="margin-top: 5px;" [@listAnimation]="categorias.length">
+      <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" *ngFor="let categoria of categorias; let i = index" style="border-radius: 32px; height:290px; max-height: 310px; ;">
+        <div class="panel panel-white radius text-center" style="box-shadow: 1px 10px 15px 0px; " >
           <div class="panel-body">
             <span class="fa-stack"> 
               <i [ngClass]="categoria.icon || categoria.ban" class="text-primary" style="font-size: 36px; color: #DDDEDE;"></i> 
