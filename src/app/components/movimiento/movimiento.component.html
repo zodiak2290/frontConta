@@ -2,15 +2,7 @@
     <div class="container-fluid">
         <form #addMovimientoForm="ngForm" (ngSubmit)="addMovimiento(addMovimientoForm)">
             <div class="col-lg-4 text-center">
-                <ngb-datepicker #dp [(ngModel)]="movimiento.fecha" (navigate)="date = $event.next" [ngModelOptions]="{standalone: true}"></ngb-datepicker>
-                
-                <!--<ngb-datepicker #d></ngb-datepicker>
-                <div class="form-group">
-                    <label for="fecha">
-                        Fecha {{ movimiento.fecha }}
-                    </label>
-                    <input type="date" class="form-control" name="fecha" #fecha="ngModel" [(ngModel)]="movimiento.fecha" />
-                </div>-->
+                <ngb-datepicker #dp [(ngModel)]="fechaCalendar" (navigate)="date = $event.next" [ngModelOptions]="{standalone: true}"></ngb-datepicker>
             </div>
             <div class="col-lg-8">
                 <div class="col-lg-6">

@@ -40,7 +40,7 @@ export class ModalConceptosComponent implements OnInit, OnChanges {
   getConceptos(page){
     if(page > 0){
       this.page = page;
-      let params = { page: page, idcategoria: this.categoria._id };
+      let params = { page: page, idcategoria: this.categoria._id, limit:10000 };
       console.log(params);
       this._conceptoService.getConceptos(params)
       .subscribe(
