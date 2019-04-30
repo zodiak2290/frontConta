@@ -45,7 +45,7 @@
       [showCancelButton]="true"
       [focusCancel]="true">
     </swal>
-    <div class="row" style="margin-top: 5px;" [@listAnimation]="categorias.length">
+    <div *ngIf="categorias" class="row" style="margin-top: 5px;" [@listAnimation]="categorias.length">
       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" *ngFor="let categoria of categorias; let i = index" style="border-radius: 32px; height:290px; max-height: 310px; ;">
         <div class="panel panel-white radius text-center" style="box-shadow: 1px 10px 15px 0px; " >
           <div class="panel-body">
