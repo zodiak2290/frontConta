@@ -72,7 +72,7 @@ export class CategoriasComponent implements OnInit {
       if(categoria){
         this.categoriaEdit = categoria;
       } else {
-        this.categoriaEdit = new Categoria("", "", "");
+        this.categoriaEdit = new Categoria("", "", "", null);
       }
       $("#myModal").modal('toggle');
       this.showModal = true;

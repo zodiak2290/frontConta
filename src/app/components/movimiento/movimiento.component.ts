@@ -33,7 +33,7 @@ export class MovimientoComponent implements OnInit {
   ngOnInit() {
     this.fechaCalendar = this.calendar.getToday();
     let fecha = new Date( this.fechaCalendar.year, this.fechaCalendar.month - 1 , this.fechaCalendar.day );
-    this.movimiento = new Movimiento("", 0, "", 0, "", fecha);
+    //this.movimiento = new Movimiento("", 0, "", 0, "", fecha,null);
     
     this._categoriaService.getCategorias({limit: 10000000})
     .subscribe(
@@ -71,7 +71,7 @@ export class MovimientoComponent implements OnInit {
       .subscribe(
           response => {
               var fecha = this.movimiento.fecha;
-              this.movimiento = new Movimiento("", 0, "", 0, "", fecha);
+              //this.movimiento = new Movimiento("", 0, "", 0, "", fecha, null);
               this.toastr.success('OK!', 'Agregado');
           }, error => {
               console.log(error);
