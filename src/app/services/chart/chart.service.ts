@@ -122,8 +122,6 @@ export class ChartService {
 		function processData(data) {
 			let treeData = [];
 		  
-			let smallBrands = { name: "Other", children: [] };
-		  
 			for (var brand in data) {
 			  let brandData = { name: brand, children: [] }
 			  let brandTotal = 0;
@@ -132,22 +130,14 @@ export class ChartService {
 			  }
 		  
 			  for (var model in data[brand]) {
-				// do not add very small
-				if (data[brand][model] > 100) {
 				  brandData.children.push({ name: model, count: data[brand][model] });
-				}
 			  }
-		  
-			  // add to small brands if total number less than
-			  if (brandTotal > 10000) {
-				treeData.push(brandData);
-			  }
-			  else {
-				smallBrands.children.push(brandData)
-			  }
+
+			  treeData.push(brandData);
+			  
 		  
 			}
-			treeData.push(smallBrands);
+
 			return treeData;
 		  }
 		  chart.data = processData(datos);
