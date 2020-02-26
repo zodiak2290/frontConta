@@ -1,13 +1,88 @@
-<div class="col-lg-8 col-lg-offset-2">
-    <div class="jumbotron">
-        <p class="text-center">
-            <a class="btn btn-primary btn-block" role="button" (click)="showDivMovimiento = !showDivMovimiento">
-                <span *ngIf="showDivMovimiento">Cancelar</span>
-                <span *ngIf="!showDivMovimiento">Agregar movimiento</span> 
-            </a>
-        </p>
+<!--
+    <div>
+    <app-movimiento></app-movimiento>
+</div>-->
+<div class="row" style="margin-top:5%;">
+    <div class="col-lg-2">
+        <div class="text-center">
+            <ngb-datepicker #dp [(ngModel)]="fechaCalendar" (navigate)="date = $event.next" [ngModelOptions]="{standalone: true}"></ngb-datepicker>
+        </div>
+        <button class="btn btn-primary btn-block" (click)="guardar()" *ngIf="movimientos.length > 0">
+            Guardar
+        </button>
+
+        <button class="btn btn-default btn-block" (click)="limpiar()" *ngIf="movimientos.length > 0">
+            Eliminar todos
+        </button>
     </div>
-    <div class="row" *ngIf="showDivMovimiento">
-      <app-movimiento></app-movimiento>
+    <div class="col-lg-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <strong>
+                        Agregar Movimientos
+                    </strong>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <td><strong>Categoria</strong></td>
+                                <td class="text-center"><strong>Concepto</strong></td>
+                                <td class="text-center"><strong>Comentatios</strong></td>
+                                <td class="text-right"><strong>Total</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let movimiento of movimientos; let indiceM = index;" id="fila-{{ indiceM }}">
+                                <td>
+                                    <select class="form-control input-sm" name="categoria" [(ngModel)]="movimiento.categoriaSelected" #categoria="ngModel" (ngModelChange)="callConceptos( movimiento )">
+                                        <option *ngFor="let categoria of categorias;let i= index;" [ngValue]="categoria" selected="i==0">
+                                            {{categoria.nombre | uppercase}}</option>
+                                    </select>
+                                </td>
+                                <td class="text-center">
+                                    <select class="form-control" name="concepto" [(ngModel)]="movimiento.conceptoSelected" #concepto="ngModel">
+                                        <option *ngFor="let concepto of movimiento.categoriaSelected.conceptos; let i=index;" [ngValue]="concepto" selected="i==0">
+                                            {{concepto.nombre | uppercase}}
+                                        </option>
+                                    </select>
+                                </td>
+                                <td class="text-center">
+                                    <textarea placeholder="(Opcional)" name="motivo" class="form-control" #descripcion="ngModel" [(ngModel)]="movimiento.motivo">
+                                        
+                                    </textarea>
+                                </td>
+                                <td class="text-right">
+                                    <div class="input-group">
+                                            <input type="number" class="form-control" name="monto" #monto="ngModel" placeholder="Monto" [(ngModel)]="movimiento.monto" (change)="calculateTotal()" required>
+                                        <span class="input-group-btn">
+                                            <button class=" pull-rigth btn btn-danger" id="delete-{{ indiceM }}" (click)="deleteMovimiento( movimiento )">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <button class=" pull-rigth btn btn-info" (click)="newMovimiento()">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="no-line"></td>
+                                <td class="no-line"></td>
+                                <td class="no-line text-center"><strong>Total</strong></td>
+                                <td class="no-line text-right"> $ {{  total }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

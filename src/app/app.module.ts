@@ -23,6 +23,9 @@ import { RutaGuard }  from './validacion/ruta.guard';
 import { MovimientoComponent } from './components/movimiento/movimiento.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,13 +37,15 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     TableComponent,
     ModalConceptosComponent,
     MovimientoComponent,
-    EstadisticasComponent
+    EstadisticasComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
     HttpClientModule,
+    NgbModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added,
     AngularFontAwesomeModule,

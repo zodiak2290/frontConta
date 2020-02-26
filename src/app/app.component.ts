@@ -35,4 +35,8 @@ export class AppComponent implements OnInit, DoCheck {
     this._router.navigate(['/login']);
   }
 
+  toggleSidebar(){
+    $("#wrapper").toggleClass("toggled");
+  }
+
 }
